@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "node_modules/.bin/karma start && node_modules/.bin/standard"
+    "test": "node_modules/.bin/karma start --single-run"
   },
   "author": {
     "name": "Alan Clarke",
