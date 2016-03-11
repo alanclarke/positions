@@ -1,6 +1,6 @@
 {
   "name": "situate",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A small, dependency free dom element positioning lib inspired by jquery-ui/position",
   "main": "lib/situate.js",
   "directories": {
@@ -30,6 +30,5 @@
     "standard": "^6.0.8",
     "webpack": "^1.12.14"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }
