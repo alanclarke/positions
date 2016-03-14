@@ -1,5 +1,5 @@
 /* globals describe beforeEach afterEach it */
-var positioning = require('../lib/positioning')
+var positions = require('../lib/positions')
 var expect = require('chai').expect
 var create = require('./lib/create')
 var each = require('./lib/each')
@@ -49,7 +49,7 @@ describe('position absolute', function () {
             'should correctly position my', myVertical, myHorizontal,
             'at their', theirVertical, theirHorizontal
           ].join(' '), function () {
-            var position = positioning(
+            var position = positions(
               el, [myVertical, myHorizontal].join(' '),
               target, [theirVertical, theirHorizontal].join(' ')
             )

@@ -1,8 +1,8 @@
 {
-  "name": "positioning",
-  "version": "1.0.1",
+  "name": "positions",
+  "version": "1.0.0",
   "description": "A small, dependency free dom element positioning lib inspired by jquery-ui/position",
-  "main": "lib/positioning.js",
+  "main": "lib/positions.js",
   "directories": {
     "test": "test"
   },
@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/qubitdigital/positioning.git"
+    "url": "git+https://github.com/qubitdigital/positions.git"
   },
   "license": "UNLICENSED",
   "devDependencies": {
