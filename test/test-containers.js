@@ -39,9 +39,8 @@ describe('window', function () {
             'at their', theirVertical, theirHorizontal
           ].join(' '), function () {
             var position = positioning(
-              el, target,
-              [myVertical, myHorizontal].join(' '),
-              [theirVertical, theirHorizontal].join(' ')
+              el, [myVertical, myHorizontal].join(' '),
+              target, [theirVertical, theirHorizontal].join(' ')
             )
             el.style.left = position.left + 'px'
             el.style.top = position.top + 'px'
@@ -98,9 +97,8 @@ describe('document', function () {
             'at their', theirVertical, theirHorizontal
           ].join(' '), function () {
             var position = positioning(
-              el, target,
-              [myVertical, myHorizontal].join(' '),
-              [theirVertical, theirHorizontal].join(' ')
+              el, [myVertical, myHorizontal].join(' '),
+              target, [theirVertical, theirHorizontal].join(' ')
             )
             el.style.left = position.left + 'px'
             el.style.top = position.top + 'px'
