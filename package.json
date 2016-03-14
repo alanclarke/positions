@@ -1,13 +1,13 @@
 {
-  "name": "situate",
+  "name": "positioning",
   "version": "1.0.0",
   "description": "A small, dependency free dom element positioning lib inspired by jquery-ui/position",
-  "main": "lib/situate.js",
+  "main": "lib/positioning.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "test": "node_modules/.bin/karma start && node_modules/.bin/standard"
+    "test": "node_modules/.bin/karma start --single-run"
   },
   "author": {
     "name": "Alan Clarke",
@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/qubitdigital/situate.git"
+    "url": "git+https://github.com/qubitdigital/positioning.git"
   },
   "license": "UNLICENSED",
   "devDependencies": {
@@ -30,6 +30,5 @@
     "standard": "^6.0.8",
     "webpack": "^1.12.14"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }
