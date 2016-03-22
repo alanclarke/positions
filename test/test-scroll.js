@@ -53,12 +53,6 @@ describe('scroll', function () {
               'should correctly position my', myVertical, myHorizontal,
               'at their', theirVertical, theirHorizontal
             ].join(' '), function () {
-              var position = positions(
-                el, [myVertical, myHorizontal].join(' '),
-                target, [theirVertical, theirHorizontal].join(' ')
-              )
-              el.style.left = position.left + 'px'
-              el.style.top = position.top + 'px'
               var left = targetStyle.left + parent.offsetLeft
               var top = targetStyle.top + parent.offsetTop - parent.scrollTop
               if (theirHorizontal === 'right') left += targetStyle.width
@@ -69,6 +63,12 @@ describe('scroll', function () {
               if (myHorizontal === 'center') left -= myStyle.width / 2
               if (myVertical === 'bottom') top -= myStyle.height
               if (myVertical === 'center') top -= myStyle.height / 2
+              var position = positions(
+                el, [myVertical, myHorizontal].join(' '),
+                target, [theirVertical, theirHorizontal].join(' ')
+              )
+              el.style.left = position.left + 'px'
+              el.style.top = position.top + 'px'
               expect(position).to.eql({ top: top, left: left })
             })
           })
@@ -124,12 +124,6 @@ describe('scroll', function () {
               'should correctly position my', myVertical, myHorizontal,
               'at their', theirVertical, theirHorizontal
             ].join(' '), function () {
-              var position = positions(
-                el, [myVertical, myHorizontal].join(' '),
-                target, [theirVertical, theirHorizontal].join(' ')
-              )
-              el.style.left = position.left + 'px'
-              el.style.top = position.top + 'px'
               var left = targetStyle.left
               var top = targetStyle.top
               if (theirHorizontal === 'right') left += targetStyle.width
@@ -140,6 +134,12 @@ describe('scroll', function () {
               if (myHorizontal === 'center') left -= myStyle.width / 2
               if (myVertical === 'bottom') top -= myStyle.height
               if (myVertical === 'center') top -= myStyle.height / 2
+              var position = positions(
+                el, [myVertical, myHorizontal].join(' '),
+                target, [theirVertical, theirHorizontal].join(' ')
+              )
+              el.style.left = position.left + 'px'
+              el.style.top = position.top + 'px'
               expect(position).to.eql({ top: top, left: left })
             })
           })
@@ -195,12 +195,6 @@ describe('scroll', function () {
               'should correctly position my', myVertical, myHorizontal,
               'at their', theirVertical, theirHorizontal
             ].join(' '), function () {
-              var position = positions(
-                el, [myVertical, myHorizontal].join(' '),
-                target, [theirVertical, theirHorizontal].join(' ')
-              )
-              el.style.left = position.left + 'px'
-              el.style.top = position.top + 'px'
               var left = parseInt(targetStyle['margin-left'], 10)
               var top = parseInt(targetStyle['margin-top'], 10)
               if (theirHorizontal === 'right') left += targetStyle.width
@@ -211,6 +205,12 @@ describe('scroll', function () {
               if (myHorizontal === 'center') left -= myStyle.width / 2
               if (myVertical === 'bottom') top -= myStyle.height
               if (myVertical === 'center') top -= myStyle.height / 2
+              var position = positions(
+                el, [myVertical, myHorizontal].join(' '),
+                target, [theirVertical, theirHorizontal].join(' ')
+              )
+              el.style.left = position.left + 'px'
+              el.style.top = position.top + 'px'
               expect(position).to.eql({ top: top, left: left })
             })
           })
@@ -266,12 +266,6 @@ describe('scroll', function () {
               'should correctly position my', myVertical, myHorizontal,
               'at their', theirVertical, theirHorizontal
             ].join(' '), function () {
-              var position = positions(
-                el, [myVertical, myHorizontal].join(' '),
-                target, [theirVertical, theirHorizontal].join(' ')
-              )
-              el.style.left = position.left + 'px'
-              el.style.top = position.top + 'px'
               var left = targetStyle.left
               var top = targetStyle.top
               if (theirHorizontal === 'right') left += targetStyle.width
@@ -282,6 +276,12 @@ describe('scroll', function () {
               if (myHorizontal === 'center') left -= myStyle.width / 2
               if (myVertical === 'bottom') top -= myStyle.height
               if (myVertical === 'center') top -= myStyle.height / 2
+              var position = positions(
+                el, [myVertical, myHorizontal].join(' '),
+                target, [theirVertical, theirHorizontal].join(' ')
+              )
+              el.style.left = position.left + 'px'
+              el.style.top = position.top + 'px'
               expect(position).to.eql({ top: top, left: left })
             })
           })
@@ -332,12 +332,6 @@ describe('scroll', function () {
               'should correctly position my', myVertical, myHorizontal,
               'at their', theirVertical, theirHorizontal
             ].join(' '), function () {
-              var position = positions(
-                el, [myVertical, myHorizontal].join(' '),
-                target, [theirVertical, theirHorizontal].join(' ')
-              )
-              el.style.left = position.left + 'px'
-              el.style.top = position.top + 'px'
               var left = parseInt(target.offsetLeft, 10)
               var top = parseInt(target.offsetTop, 10)
               if (theirHorizontal === 'right') left += targetStyle.width
@@ -348,6 +342,12 @@ describe('scroll', function () {
               if (myHorizontal === 'center') left -= myStyle.width / 2
               if (myVertical === 'bottom') top -= myStyle.height
               if (myVertical === 'center') top -= myStyle.height / 2
+              var position = positions(
+                el, [myVertical, myHorizontal].join(' '),
+                target, [theirVertical, theirHorizontal].join(' ')
+              )
+              el.style.left = position.left + 'px'
+              el.style.top = position.top + 'px'
               expect(position).to.eql({ top: top, left: left })
             })
           })
