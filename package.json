@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/qubitdigital/positions.git"
+    "url": "git+https://github.com/QubitProducts/positions.git"
   },
   "license": "UNLICENSED",
   "devDependencies": {
