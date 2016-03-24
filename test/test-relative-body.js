@@ -28,6 +28,7 @@ describe('containers', function () {
         height: window.innerHeight
       }
       margin = 8
+      document.body.style.position = 'relative'
       document.body.style.margin = margin + 'px'
       document.body.style.border = '1px solid black'
       el = create(myStyle)
@@ -38,8 +39,8 @@ describe('containers', function () {
         'should correctly position my', myVertical, myHorizontal,
         'at their', theirVertical, theirHorizontal
       ].join(' '), function () {
-        var left = targetStyle.left
-        var top = targetStyle.top
+        var left = targetStyle.left - margin
+        var top = targetStyle.top - margin
         if (theirHorizontal === 'right') left += targetStyle.width
         if (theirHorizontal === 'center') left += (targetStyle.width) / 2
         if (theirVertical === 'bottom') top += targetStyle.height
@@ -77,6 +78,8 @@ describe('containers', function () {
         width: docSize.width,
         height: docSize.height
       }
+      document.body.style.position = 'relative'
+      margin = 8
       document.body.style.margin = margin + 'px'
       el = create(myStyle)
       target = document
@@ -86,8 +89,8 @@ describe('containers', function () {
         'should correctly position my', myVertical, myHorizontal,
         'at their', theirVertical, theirHorizontal
       ].join(' '), function () {
-        var left = targetStyle.left
-        var top = targetStyle.top
+        var left = targetStyle.left - margin
+        var top = targetStyle.top - margin
         if (theirHorizontal === 'right') left += targetStyle.width
         if (theirHorizontal === 'center') left += targetStyle.width / 2
         if (theirVertical === 'bottom') top += targetStyle.height
@@ -111,6 +114,7 @@ describe('containers', function () {
     var el, target, myStyle, targetStyle, margin, bodySize
     beforeEach(function () {
       margin = 8
+      document.body.style.position = 'relative'
       document.body.style.margin = margin + 'px'
       document.body.style.border = '1px solid black'
       bodySize = size(document.body)
@@ -136,8 +140,8 @@ describe('containers', function () {
         'should correctly position my', myVertical, myHorizontal,
         'at their', theirVertical, theirHorizontal
       ].join(' '), function () {
-        var left = targetStyle.left + margin
-        var top = targetStyle.top + margin
+        var left = targetStyle.left
+        var top = targetStyle.top
         if (theirHorizontal === 'right') left += targetStyle.width
         if (theirHorizontal === 'center') left += targetStyle.width / 2
         if (theirVertical === 'bottom') top += targetStyle.height
