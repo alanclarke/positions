@@ -1,6 +1,6 @@
 {
   "name": "positions",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "A small, dependency free dom element positioning lib inspired by jquery-ui/position",
   "main": "lib/positions.js",
   "directories": {
