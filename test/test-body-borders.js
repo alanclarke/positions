@@ -12,35 +12,38 @@ describe('borders', function () {
   })
 
   describe('when target is body', function () {
-    var bodySize = size(document.body)
-    var myStyle = {
-      top: 40,
-      left: 30,
-      width: 200,
-      height: 100,
-      position: 'absolute',
-      background: 'blue'
-    }
-    var targetStyle = {
-      top: 0,
-      left: 0,
-      width: bodySize.width,
-      height: bodySize.height
-    }
-    var el, target, border
+    var el, target, border, margin, bodySize, myStyle, targetStyle
     beforeEach(function () {
+      border = 20
+      document.body.style.margin = '8px'
+      document.body.style.border = border + 'px solid rgba(0,0,0,0.1)'
+      bodySize = size(document.body)
+      myStyle = {
+        top: 40,
+        left: 30,
+        width: 200,
+        height: 100,
+        position: 'absolute',
+        background: 'rgba(0,0,255,0.1)'
+      }
+      targetStyle = {
+        top: 0,
+        left: 0,
+        width: bodySize.width,
+        height: bodySize.height
+      }
       el = create(myStyle)
       target = document.body
       border = 22
-      document.body.style.border = border + 'px solid black'
+      margin = 8
     })
     permute(function (myVertical, myHorizontal, theirVertical, theirHorizontal) {
       it([
         'should correctly position my', myVertical, myHorizontal,
         'at their', theirVertical, theirHorizontal
       ].join(' '), function () {
-        var left = targetStyle.left
-        var top = targetStyle.top
+        var left = targetStyle.left + margin
+        var top = targetStyle.top + margin
         if (theirHorizontal === 'right') left += targetStyle.width
         if (theirHorizontal === 'center') left += (targetStyle.width / 2)
         if (theirVertical === 'bottom') top += targetStyle.height
@@ -60,37 +63,37 @@ describe('borders', function () {
     })
   })
   describe('when target is not body', function () {
-    var myStyle = {
-      top: 40,
-      left: 30,
-      width: 200,
-      height: 100,
-      position: 'absolute',
-      background: 'blue'
-    }
-    var targetStyle = {
-      top: 10,
-      left: 20,
-      width: 300,
-      height: 400,
-      position: 'absolute',
-      background: 'rgba(0,255,0,0.1)'
-    }
-    var myParentStyle = {
-      top: 40,
-      left: 30,
-      width: 200,
-      height: 100,
-      position: 'absolute',
-      background: 'rgba(0,0,0,0.1)'
-    }
-    var el, target, parent, border
+    var el, target, parent, border, myStyle, targetStyle, myParentStyle
     beforeEach(function () {
+      myStyle = {
+        top: 40,
+        left: 30,
+        width: 200,
+        height: 100,
+        position: 'absolute',
+        background: 'rgba(0,0,255,0.1)'
+      }
+      targetStyle = {
+        top: 10,
+        left: 20,
+        width: 300,
+        height: 400,
+        position: 'absolute',
+        background: 'rgba(0,255,0,0.1)'
+      }
+      myParentStyle = {
+        top: 40,
+        left: 30,
+        width: 200,
+        height: 100,
+        position: 'absolute',
+        background: 'rgba(0,0,0,0.1)'
+      }
       el = create(myStyle)
       target = create(targetStyle)
       parent = create(myParentStyle)
       border = 22
-      document.body.style.border = border + 'px solid black'
+      document.body.style.border = border + 'px solid rgba(0,0,0,0.1)'
       parent.appendChild(el)
     })
     permute(function (myVertical, myHorizontal, theirVertical, theirHorizontal) {

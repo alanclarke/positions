@@ -11,7 +11,7 @@ describe('position absolute', function () {
     width: 200,
     height: 100,
     position: 'absolute',
-    background: 'blue'
+    background: 'rgba(0,0,255,0.1)'
   }
   var targetStyle = {
     top: 10,

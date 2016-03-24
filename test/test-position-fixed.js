@@ -5,24 +5,24 @@ var permute = require('./lib/permute')
 var create = require('./lib/create')
 
 describe('position fixed', function () {
-  var myStyle = {
-    top: 40,
-    left: 30,
-    width: 200,
-    height: 100,
-    position: 'fixed',
-    background: 'blue'
-  }
-  var targetStyle = {
-    top: 10,
-    left: 20,
-    width: 300,
-    height: 400,
-    position: 'absolute',
-    background: 'red'
-  }
-  var el, target
+  var el, target, myStyle, targetStyle
   beforeEach(function () {
+    myStyle = {
+      top: 40,
+      left: 30,
+      width: 200,
+      height: 100,
+      position: 'fixed',
+      background: 'rgba(0,0,255,0.1)'
+    }
+    targetStyle = {
+      top: 10,
+      left: 20,
+      width: 300,
+      height: 400,
+      position: 'absolute',
+      background: 'rgba(0,255,0,0.1)'
+    }
     el = create(myStyle)
     target = create(targetStyle)
   })

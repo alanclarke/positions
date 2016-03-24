@@ -5,50 +5,52 @@ var create = require('./lib/create')
 var permute = require('./lib/permute')
 
 describe('scroll', function () {
-  describe('fixed', function () {
-    var myStyle = {
-      top: 140,
-      left: 30,
-      width: 20,
-      height: 20,
-      position: 'fixed',
-      background: 'rgba(255, 0, 0, 0.5)'
-    }
-    var targetStyle = {
-      top: 200,
-      left: 20,
-      width: 40,
-      height: 40,
-      position: 'absolute',
-      background: 'rgba(0, 255, 0, 0.5)'
-    }
-    var myParentStyle = {
-      top: 40,
-      left: 30,
-      width: 200,
-      height: 100,
-      overflow: 'scroll',
-      position: 'relative',
-      background: 'rgba(0,0,0,0.1)'
-    }
-    var el, target, parent
+  afterEach(function () {
+    document.body.innerHTML = ''
+    document.body.setAttribute('style', '')
+  })
+  describe('fixed with relative parent', function () {
+    var el, target, parent, myStyle, targetStyle, myParentStyle
     beforeEach(function () {
+      myStyle = {
+        top: 140,
+        left: 30,
+        width: 20,
+        height: 20,
+        position: 'fixed',
+        background: 'rgba(255, 0, 0, 0.5)'
+      }
+      targetStyle = {
+        top: 200,
+        left: 20,
+        width: 40,
+        height: 40,
+        position: 'absolute',
+        background: 'rgba(0, 255, 0, 0.5)'
+      }
+      myParentStyle = {
+        top: 40,
+        left: 30,
+        width: 200,
+        height: 100,
+        overflow: 'scroll',
+        position: 'relative',
+        background: 'rgba(0,0,0,0.1)'
+      }
       el = create(myStyle)
       target = create(targetStyle)
       parent = create(myParentStyle)
+      document.body.style.border = '1px solid black'
       parent.appendChild(el)
       parent.appendChild(target)
       parent.scrollTop = 140
-    })
-    afterEach(function () {
-      document.body.innerHTML = ''
     })
     permute(function (myVertical, myHorizontal, theirVertical, theirHorizontal) {
       it([
         'should correctly position my', myVertical, myHorizontal,
         'at their', theirVertical, theirHorizontal
       ].join(' '), function () {
-        var left = targetStyle.left + parent.offsetLeft
+        var left = targetStyle.left + parent.offsetLeft - parent.scrollLeft
         var top = targetStyle.top + parent.offsetTop - parent.scrollTop
         if (theirHorizontal === 'right') left += targetStyle.width
         if (theirHorizontal === 'center') left += targetStyle.width / 2
@@ -68,34 +70,35 @@ describe('scroll', function () {
       })
     })
   })
-  describe('absolute', function () {
-    var myStyle = {
-      top: 140,
-      left: 30,
-      width: 20,
-      height: 20,
-      position: 'absolute',
-      background: 'rgba(255, 0, 0, 0.5)'
-    }
-    var targetStyle = {
-      top: 200,
-      left: 20,
-      width: 40,
-      height: 40,
-      position: 'absolute',
-      background: 'rgba(0, 255, 0, 0.5)'
-    }
-    var myParentStyle = {
-      top: 40,
-      left: 30,
-      width: 200,
-      height: 100,
-      overflow: 'scroll',
-      position: 'relative',
-      background: 'rgba(0,0,0,0.1)'
-    }
-    var el, target, parent
+  describe('fixed with absolute parent', function () {
+    var el, target, parent, myStyle, targetStyle, myParentStyle
     beforeEach(function () {
+      myStyle = {
+        top: 140,
+        left: 30,
+        width: 20,
+        height: 20,
+        position: 'fixed',
+        background: 'rgba(255, 0, 0, 0.5)'
+      }
+      targetStyle = {
+        top: 200,
+        left: 20,
+        width: 40,
+        height: 40,
+        position: 'absolute',
+        background: 'rgba(0, 255, 0, 0.5)'
+      }
+      myParentStyle = {
+        top: 40,
+        left: 30,
+        width: 200,
+        height: 100,
+        overflow: 'scroll',
+        position: 'relative',
+        background: 'rgba(0,0,0,0.1)'
+      }
+      document.body.style.border = '1px solid black'
       el = create(myStyle)
       target = create(targetStyle)
       parent = create(myParentStyle)
@@ -103,16 +106,13 @@ describe('scroll', function () {
       parent.appendChild(target)
       parent.scrollTop = 140
     })
-    afterEach(function () {
-      document.body.innerHTML = ''
-    })
     permute(function (myVertical, myHorizontal, theirVertical, theirHorizontal) {
       it([
         'should correctly position my', myVertical, myHorizontal,
         'at their', theirVertical, theirHorizontal
       ].join(' '), function () {
-        var left = targetStyle.left
-        var top = targetStyle.top
+        var left = targetStyle.left + parent.offsetLeft - parent.scrollLeft
+        var top = targetStyle.top + parent.offsetTop - parent.scrollTop
         if (theirHorizontal === 'right') left += targetStyle.width
         if (theirHorizontal === 'center') left += targetStyle.width / 2
         if (theirVertical === 'bottom') top += targetStyle.height
@@ -131,34 +131,34 @@ describe('scroll', function () {
       })
     })
   })
-  describe('relative', function () {
-    var myStyle = {
-      top: 140,
-      left: 30,
-      width: 20,
-      height: 20,
-      position: 'absolute',
-      background: 'rgba(255, 0, 0, 0.5)'
-    }
-    var targetStyle = {
-      width: 40,
-      height: 40,
-      position: 'relative',
-      'margin-left': '20px',
-      'margin-top': '200px',
-      background: 'rgba(0, 255, 0, 0.5)'
-    }
-    var myParentStyle = {
-      top: 40,
-      left: 30,
-      width: 200,
-      height: 100,
-      overflow: 'scroll',
-      position: 'relative',
-      background: 'rgba(0,0,0,0.1)'
-    }
-    var el, target, parent
+  describe('absolute with absolute parent', function () {
+    var el, target, parent, myStyle, targetStyle, myParentStyle
     beforeEach(function () {
+      myStyle = {
+        top: 140,
+        left: 30,
+        width: 20,
+        height: 20,
+        position: 'absolute',
+        background: 'rgba(255, 0, 0, 0.5)'
+      }
+      targetStyle = {
+        top: 200,
+        left: 20,
+        width: 40,
+        height: 40,
+        position: 'absolute',
+        background: 'rgba(0, 255, 0, 0.5)'
+      }
+      myParentStyle = {
+        top: 40,
+        left: 30,
+        width: 200,
+        height: 100,
+        overflow: 'scroll',
+        position: 'relative',
+        background: 'rgba(0,0,0,0.1)'
+      }
       el = create(myStyle)
       target = create(targetStyle)
       parent = create(myParentStyle)
@@ -166,16 +166,13 @@ describe('scroll', function () {
       parent.appendChild(target)
       parent.scrollTop = 140
     })
-    afterEach(function () {
-      document.body.innerHTML = ''
-    })
     permute(function (myVertical, myHorizontal, theirVertical, theirHorizontal) {
       it([
         'should correctly position my', myVertical, myHorizontal,
         'at their', theirVertical, theirHorizontal
       ].join(' '), function () {
-        var left = parseInt(targetStyle['margin-left'], 10)
-        var top = parseInt(targetStyle['margin-top'], 10)
+        var left = target.offsetLeft
+        var top = target.offsetTop
         if (theirHorizontal === 'right') left += targetStyle.width
         if (theirHorizontal === 'center') left += targetStyle.width / 2
         if (theirVertical === 'bottom') top += targetStyle.height
@@ -194,34 +191,34 @@ describe('scroll', function () {
       })
     })
   })
-  describe('absolute', function () {
-    var myStyle = {
-      top: 140,
-      left: 30,
-      width: 20,
-      height: 20,
-      position: 'absolute',
-      background: 'rgba(255, 0, 0, 0.5)'
-    }
-    var targetStyle = {
-      top: 200,
-      left: 20,
-      width: 40,
-      height: 40,
-      position: 'absolute',
-      background: 'rgba(0, 255, 0, 0.5)'
-    }
-    var myParentStyle = {
-      top: 40,
-      left: 30,
-      width: 200,
-      height: 100,
-      overflow: 'scroll',
-      position: 'relative',
-      background: 'rgba(0,0,0,0.1)'
-    }
-    var el, target, parent
+  describe('absolute with relative parent', function () {
+    var el, target, parent, myStyle, targetStyle, myParentStyle
     beforeEach(function () {
+      myStyle = {
+        top: 140,
+        left: 30,
+        width: 20,
+        height: 20,
+        position: 'absolute',
+        background: 'rgba(255, 0, 0, 0.5)'
+      }
+      targetStyle = {
+        width: 40,
+        height: 40,
+        position: 'relative',
+        'margin-left': '20px',
+        'margin-top': '200px',
+        background: 'rgba(0, 255, 0, 0.5)'
+      }
+      myParentStyle = {
+        top: 40,
+        left: 30,
+        width: 200,
+        height: 100,
+        overflow: 'scroll',
+        position: 'relative',
+        background: 'rgba(0,0,0,0.1)'
+      }
       el = create(myStyle)
       target = create(targetStyle)
       parent = create(myParentStyle)
@@ -229,16 +226,13 @@ describe('scroll', function () {
       parent.appendChild(target)
       parent.scrollTop = 140
     })
-    afterEach(function () {
-      document.body.innerHTML = ''
-    })
     permute(function (myVertical, myHorizontal, theirVertical, theirHorizontal) {
       it([
         'should correctly position my', myVertical, myHorizontal,
         'at their', theirVertical, theirHorizontal
       ].join(' '), function () {
-        var left = targetStyle.left
-        var top = targetStyle.top
+        var left = target.offsetLeft
+        var top = target.offsetTop
         if (theirHorizontal === 'right') left += targetStyle.width
         if (theirHorizontal === 'center') left += targetStyle.width / 2
         if (theirVertical === 'bottom') top += targetStyle.height
@@ -257,38 +251,36 @@ describe('scroll', function () {
       })
     })
   })
-  describe('window scroll', function () {
-    var myStyle = {
-      top: 140,
-      left: 30,
-      width: 20,
-      height: 20,
-      position: 'absolute',
-      background: 'rgba(255, 0, 0, 0.5)'
-    }
-    var targetStyle = {
-      width: 40,
-      height: 40,
-      position: 'relative',
-      'margin-left': '20px',
-      'margin-top': '200px',
-      background: 'rgba(0, 255, 0, 0.5)'
-    }
-    var fillerStyle = {
-      width: 20,
-      height: Math.min(1000000000, window.innerHeight * 100),
-      position: 'relative',
-      background: 'rgba(0,0,0,0.1)'
-    }
-    var el, target
+  describe('parent is body and window has scroll', function () {
+    var el, target, myStyle, targetStyle, fillerStyle
     beforeEach(function () {
+      myStyle = {
+        top: 140,
+        left: 30,
+        width: 20,
+        height: 20,
+        position: 'absolute',
+        background: 'rgba(255, 0, 0, 0.5)'
+      }
+      targetStyle = {
+        width: 40,
+        height: 40,
+        position: 'relative',
+        'margin-left': '20px',
+        'margin-top': '200px',
+        background: 'rgba(0, 255, 0, 0.5)'
+      }
+      fillerStyle = {
+        width: 20,
+        height: Math.min(1000000000, window.innerHeight * 100),
+        position: 'relative',
+        background: 'rgba(0,0,0,0.1)'
+      }
+      document.body.style.margin = '8px'
       el = create(myStyle)
       target = create(targetStyle)
       create(fillerStyle)
       window.scroll(0, 100)
-    })
-    afterEach(function () {
-      document.body.innerHTML = ''
     })
     permute(function (myVertical, myHorizontal, theirVertical, theirHorizontal) {
       it([
