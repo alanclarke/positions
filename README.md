@@ -48,3 +48,7 @@ var css = positions(el, 'bottom center', target, 'bottom center')
 ```js
 npm test
 ```
+```
+
+## browser compatibility
+works in all good browsers! (also in ie9+)
