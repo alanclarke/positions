@@ -7,6 +7,12 @@ A small dom element positioning lib inspired by jquery-ui/position
 npm install positions
 ```
 
+## features
+- no dependencies
+- simple functional api
+- well tested in ie9+
+- tiny (871 B)
+
 ## usage
 ```js
 var positions = require('positions')
@@ -47,7 +53,6 @@ var css = positions(el, 'bottom center', target, 'bottom center')
 ## run tests
 ```js
 npm test
-```
 ```
 
 ## browser compatibility
