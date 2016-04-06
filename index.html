@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>positions</title>
+  <script src="./node_modules/systemjs/dist/system.js"></script>
+  <style>
+    body {
+      background: #f0f0f0;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+    #me {
+      opacity: 0.5;
+      background: red;
+      width: 50px;
+      height: 50px;
+      position: absolute;
+    }
+    #target {
+      opacity: 0.5;
+      background: green;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      margin-top: -100px;
+      margin-left: -100px;
+      width: 200px;
+      height: 200px;
+    }
+    #scroll {
+      position: absolute;
+      top: 200%;
+      left: 200%;
+      width: 10px;
+      height: 10px;
+      background: black;
+    }
+    #toolbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      padding: 10px;
+    }
+  </style>
+  <script>
+    System.config({
+      defaultJSExtensions: true,
+      paths: { '*': '../../node_modules/*' },
+      packageConfigPaths: ['../../node_modules/*/package.json']
+    })
+    System.import('./lib/positions.js').then(function(positions) {
+      var el = get('me')
+      var targets = {
+        target: get('target'),
+        document: document,
+        window: window
+      }
+      ಠ_ಠ()
+
+      on(window, 'resize', ಠ_ಠ)
+      on(window, 'scroll', ಠ_ಠ)
+      var selects = document.getElementsByTagName('select')
+      var l = selects.length
+      while (l--) on(selects[l], 'change', ಠ_ಠ)
+
+      function on (el, event, fn) {
+        el.addEventListener(event, ಠ_ಠ)
+      }
+
+      function val (id) {
+        return get(id).value
+      }
+
+      function get (id) {
+        return document.getElementById(id)
+      }
+
+      function ಠ_ಠ() {
+        var position = positions(
+          el,
+          ['myVertical', 'myHorizontal'].map(val).join(' '),
+          targets[val('myTarget')],
+          ['theirVertical', 'theirHorizontal'].map(val).join(' ')
+        )
+        el.style.top = position.top + 'px'
+        el.style.left = position.left + 'px'
+      }
+    })
+  </script>
+</head>
+<body>
+  <div id='toolbar'>
+    position my
+    <select id='myVertical'>
+      <option>top</option>
+      <option>center</option>
+      <option>bottom</option>
+    </select>
+    <select  id='myHorizontal'>
+      <option>left</option>
+      <option>center</option>
+      <option>right</option>
+    </select>
+    at
+    <select  id='myTarget'>
+      <option>target</option>
+      <option>window</option>
+      <option>document</option>
+    </select>
+    's
+    <select id='theirVertical'>
+      <option>top</option>
+      <option>center</option>
+      <option>bottom</option>
+    </select>
+    <select id='theirHorizontal'>
+      <option>left</option>
+      <option>center</option>
+      <option>right</option>
+    </select>
+  </div>
+  <div id='target'></div>
+  <div id='me'></div>
+  <div id='scroll'></div>
+</body>
+</html>
