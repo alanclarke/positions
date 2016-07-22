@@ -7,14 +7,10 @@
     "test": "test"
   },
   "scripts": {
-    "test": "node_modules/.bin/karma start --single-run && node_modules/.bin/standard",
-    "start": "node_modules/.bin/serve -Lp 1234"
+    "test": "karma start --single-run && node_modules/.bin/standard",
+    "start": "serve -Lp 1234"
   },
-  "author": {
-    "name": "Alan Clarke",
-    "email": "alan@qubit.com",
-    "url": "qubit.com"
-  },
+  "author": "Alan Clarke <alan@qubit.com> (qubit.com)",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/QubitProducts/positions.git"
@@ -34,5 +30,16 @@
     "systemjs": "^0.19.25",
     "webpack": "^1.12.14"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "bugs": {
+    "url": "https://github.com/QubitProducts/positions/issues"
+  },
+  "homepage": "https://github.com/QubitProducts/positions#readme",
+  "keywords": [
+    "position",
+    "positioning",
+    "psotions",
+    "relative",
+    "jquery-ui/position"
+  ]
 }
