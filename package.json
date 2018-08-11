@@ -4,6 +4,7 @@
   "description": "A small, dependency free dom element positioning lib inspired by jquery-ui/position",
   "main": "lib/positions.js",
   "directories": {
+    "lib": "lib",
     "test": "test"
   },
   "scripts": {
