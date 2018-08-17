@@ -1,16 +1,30 @@
+var path = require('path')
+
 module.exports = function (config) {
   config.set({
-    frameworks: ['mocha'],
+    frameworks: [ 'mocha' ],
     files: [ 'test/test-*' ],
-    preprocessors: { '/**/*.js': ['webpack', 'sourcemap'] },
+    preprocessors: {
+      '/**/*.js': [ 'webpack', 'sourcemap' ]
+    },
     webpack: {
-      watch: true,
-      devtool: 'inline-source-map'
+      module: {
+        rules: [
+          {
+            test: /\.js$/,
+            use: { loader: 'istanbul-instrumenter-loader' },
+            include: path.resolve('lib/')
+          }
+        ]
+      }
     },
-    webpackServer: {
-      quiet: true,
-      noInfo: true
-    },
-    browsers: ['Chrome']
+    webpackMiddleware: { stats: 'errors-only', logLevel: 'error' },
+    browsers: [ 'Chrome' ],
+    reporters: [ 'progress', 'coverage' ],
+    coverageReporter: {
+      type: 'html',
+      dir: 'coverage/',
+      reporters: [ { type: 'html' }, { type: 'text-summary' } ]
+    }
   })
 }
